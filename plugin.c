@@ -40,20 +40,20 @@ query (void)
   };
 
   gimp_install_procedure (
-    "plug-in-hello",
-    "Hello, world!",
-    "Displays \"Hello, world!\" in a dialog",
-    "David Neary",
-    "Copyright David Neary",
-    "2004",
-    "_Hello world...",
+    "gimp-rpc",
+    "GIMP RPC",
+    "Discord Rich Presence for GIMP",
+    "Marc Rousavy",
+    "Copyright Marc Rousavy",
+    "2019",
+    "_Toggle Discord Rich Presence...",
     "RGB*, GRAY*",
     GIMP_PLUGIN,
     G_N_ELEMENTS (args), 0,
     args, NULL);
 
-  gimp_plugin_menu_register ("plug-in-hello",
-                             "<Image>/Filters/Misc");
+  gimp_plugin_menu_register ("gimp-rpc",
+                             "<Image>/Tools/Discord Rich Presence");
 }
 
 static void
@@ -78,7 +78,8 @@ run (const gchar      *name,
    * we are in NONINTERACTIVE mode */
   run_mode = param[0].data.d_int32;
 
-  if (run_mode != GIMP_RUN_NONINTERACTIVE)
-    g_message("Hello, world!\n");
+  if (run_mode != GIMP_RUN_NONINTERACTIVE) {
+    g_message("Not yet implemented!\n");
+  }
 }
 
