@@ -42,7 +42,7 @@ void InitDiscord()
   handlers.disconnected = handleDiscordDisconnected;
 
   // Discord_Initialize(const char* applicationId, DiscordEventHandlers* handlers, int autoRegister, const char* optionalSteamId, int pipe)
-  Discord_Initialize("418562325121990661", &handlers, 1, NULL, 0);
+  Discord_Initialize("559741941156413461", &handlers, 1, NULL, 0);
 }
 
 typedef struct DiscordRichPresence {
@@ -76,8 +76,8 @@ void UpdatePresence()
     sprintf(buffer, "Editing %s", "debugging.gmp");
     discordPresence.details = buffer;
     discordPresence.endTimestamp = time(0) + 5 * 60;
-    discordPresence.largeImageKey = "canary-large";
-    discordPresence.smallImageKey = "ptb-small";
+    discordPresence.largeImageKey = "gimp";
+    discordPresence.smallImageKey = "gimp-flat";
     discordPresence.instance = 1;
     Discord_UpdatePresence(&discordPresence);
 }
