@@ -26,7 +26,10 @@ gimptool-2.0 --install-admin gimp-rpc/plugin.c
 
 > (Installer script coming soon)
 
-### Contribute
+<details>
+  <summary>
+    <b>Contribute</b>
+  </summary>
 
 1. Clone `gimp-rpc`
 
@@ -40,30 +43,30 @@ gimptool-2.0 --install-admin gimp-rpc/plugin.c
 
     * `gimp`
 
-    ```sh
-    cd gimp
-    export INSTALL_PREFIX=$HOME/dev/gimp-prefix/
-    export SRC_DIR=/vol/scratch/gimp-beta/src
-    mkdir -p $INSTALL_PREFIX
-    mkdir -p $SRC_DIR
-    export PATH=$INSTALL_PREFIX/bin:$PATH
-    export PKG_CONFIG_PATH=$INSTALL_PREFIX/lib/pkgconfig:$PKG_CONFIG_PATH
-    export LD_LIBRARY_PATH=$INSTALL_PREFIX/lib:$LD_LIBRARY_PATH
-    ./configure --prefix=$INSTALL_PREFIX
-    ./autogen.sh --prefix=$INSTALL_PREFIX --disable-gtk-doc
-    make
-    make install
-    ```
+      ```sh
+      cd gimp
+      export INSTALL_PREFIX=$HOME/dev/gimp-prefix/
+      export SRC_DIR=/vol/scratch/gimp-beta/src
+      mkdir -p $INSTALL_PREFIX
+      mkdir -p $SRC_DIR
+      export PATH=$INSTALL_PREFIX/bin:$PATH
+      export PKG_CONFIG_PATH=$INSTALL_PREFIX/lib/pkgconfig:$PKG_CONFIG_PATH
+      export LD_LIBRARY_PATH=$INSTALL_PREFIX/lib:$LD_LIBRARY_PATH
+      ./configure --prefix=$INSTALL_PREFIX
+      ./autogen.sh --prefix=$INSTALL_PREFIX --disable-gtk-doc
+      make
+      make install
+      ```
 
     * `discord-rpc`
 
-    ```sh
-    cd discord-rpc
-    mkdir build
-    cd build
-    cmake .. -DCMAKE_INSTALL_PREFIX=<path to install discord-rpc to>
-    cmake --build . --config Release --target install
-    ```
+      ```sh
+      cd discord-rpc
+      mkdir build
+      cd build
+      cmake .. -DCMAKE_INSTALL_PREFIX=<path to install discord-rpc to>
+      cmake --build . --config Release --target install
+      ```
 
 3. Make changes to `gimp-rpc`
 
@@ -74,11 +77,11 @@ gimptool-2.0 --install-admin gimp-rpc/plugin.c
     ```sh
     gimptool-2.0 --install-admin plugin.c
     ```
-
+</details>
 
 <details>
   <summary>
-    Credits
+    <b>Credits</b>
   </summary>
   <ul>
     <li><a href="https://github.com/discordapp/discord-rpc">discord-rpc</a></li>
