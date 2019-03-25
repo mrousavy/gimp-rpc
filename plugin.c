@@ -1,4 +1,6 @@
-#include <libgimp/gimp.h>
+#include <gimp/libgimp/gimp.h>
+#include <discord-rpc/include/discord_rpc.h>
+#include <unistd.h>
 
 static void query(void);
 static void run(const gchar *name,
@@ -42,6 +44,40 @@ void InitDiscord()
   // Discord_Initialize(const char* applicationId, DiscordEventHandlers* handlers, int autoRegister, const char* optionalSteamId, int pipe)
   Discord_Initialize("418562325121990661", &handlers, 1, NULL, 0);
 }
+
+typedef struct DiscordRichPresence {
+    const char* state; /* max 128 bytes */
+    const char* details; /* max 128 bytes */
+    int64_t startTimestamp;
+    int64_t endTimestamp;
+    const char* largeImageKey; /* max 32 bytes */
+    const char* largeImageText; /* max 128 bytes */
+    const char* smallImageKey; /* max 32 bytes */
+    const char* smallImageText; /* max 128 bytes */
+    const char* partyId; /* max 128 bytes */
+    int partySize;
+    int partyMax;
+    const char* matchSecret; /* max 128 bytes */
+    const char* joinSecret; /* max 128 bytes */
+    const char* spectateSecret; /* max 128 bytes */
+    int8_t instance;
+} DiscordRichPresence;
+
+void UpdatePresence()
+{
+    char buffer[256];
+    DiscordRichPresence discordPresence;
+    memset(&discordPresence, 0, sizeof(discordPresence));
+    discordPresence.state = "GIMP";
+    sprintf(buffer, "Editing %s", "debugging.gmp");
+    discordPresence.details = buffer;
+    discordPresence.endTimestamp = time(0) + 5 * 60;
+    discordPresence.largeImageKey = "canary-large";
+    discordPresence.smallImageKey = "ptb-small";
+    discordPresence.instance = 1;
+    Discord_UpdatePresence(&discordPresence);
+}
+
 
 static void query(void)
 {
@@ -103,6 +139,11 @@ static void run(const gchar *name,
       g_message("Enabling..\n");
       InitDiscord();
       g_message("Enabled!\n");
+      while(true) {
+        print("Updating presence...");
+        UpdatePresence();
+        sleep(1000);
+      }
     }
     else
     {
