@@ -65,6 +65,10 @@ typedef struct DiscordRichPresence {
 
 void UpdatePresence()
 {
+    gint* images_count = malloc(sizeof(gint));
+    gint* images = gimp_image_list(images_count);
+    gchar* uri = gimp_image_get_uri(images[0]);
+
     char buffer[256];
     DiscordRichPresence discordPresence;
     memset(&discordPresence, 0, sizeof(discordPresence));
@@ -118,16 +122,10 @@ static void run(const gchar *name,
   static GimpParam values[1];
   GimpPDBStatusType status = GIMP_PDB_SUCCESS;
   GimpRunMode run_mode;
-
-  /* Setting mandatory output values */
   *nreturn_vals = 1;
   *return_vals = values;
-
   values[0].type = GIMP_PDB_STATUS;
   values[0].data.d_status = status;
-
-  /* Getting run_mode - we won't display a dialog if
-   * we are in NONINTERACTIVE mode */
   run_mode = param[0].data.d_int32;
 
   bool enableRichPresence = true;
