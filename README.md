@@ -6,6 +6,17 @@
   <h3 align="center">gimp-rpc</h3>
 </p>
 
+### Features
+
+<p align="center">
+  <img src="img/demo.png" height="200" />
+</p>
+
+* Displays GIMP name and icon
+* Displays currently selected tool
+* Displays currently opened file
+* Displays elapsed time in file
+
 ### Install
 
 ```sh
