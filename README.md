@@ -9,7 +9,9 @@
 ### Features
 
 <p align="center">
-  <img src="img/demo.png" height="200" />
+  <kbd>
+    <img src="img/demo.png" height="250" />
+  </kbd>
 </p>
 
 * Displays GIMP name and icon
